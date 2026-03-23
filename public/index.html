@@ -3,52 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Budget - Dashboard</title>
+    <title>Mon Budget - Dashboard Moderne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Mon Dashboard Financier</h1>
-        </header>
+    <div class="main-container">
+        
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-wallet"></i> Fine<span class="logo-accent">Hub</span>
+            </div>
+            <nav>
+                <a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#"><i class="fas fa-chart-line"></i> Statistiques</a>
+                <a href="#"><i class="fas fa-cog"></i> Paramètres</a>
+            </nav>
+        </aside>
 
-        <section class="summary-grid">
-            <div class="card balance">
-                <h3>Solde Total</h3>
-                <p id="total-balance">0 FCFA</p>
-            </div>
-            <div class="card income">
-                <h3>Revenus</h3>
-                <p id="total-income">0 FCFA</p>
-            </div>
-            <div class="card expense">
-                <h3>Dépenses</h3>
-                <p id="total-expense">0 FCFA</p>
-            </div>
-        </section>
+        <div class="content">
+            <header>
+                <div class="header-left">
+                    <h1>Bon retour, Utilisateur</h1>
+                    <p class="text-muted">Aperçu de vos finances</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn-profile"><i class="fas fa-user-circle"></i> Mon Profil</button>
+                </div>
+            </header>
 
-        <main class="dashboard-content">
-            <section class="form-section">
-                <h3>Ajouter une transaction</h3>
-                <form id="transaction-form">
-                    <input type="text" id="description" placeholder="Description (ex: Loyer, Salaire...)" required>
-                    <input type="number" id="amount" placeholder="Montant" required>
-                    <select id="category">
-                        <option value="Loisirs">Loisirs</option>
-                        <option value="Alimentation">Alimentation</option>
-                        <option value="Transport">Transport</option>
-                        <option value="Salaire">Salaire</option>
-                    </select>
-                    <button type="submit">Ajouter</button>
-                </form>
+            <section class="summary-grid">
+                <div class="card balance">
+                    <div class="card-icon"><i class="fas fa-scale-balanced"></i></div>
+                    <div class="card-info">
+                        <h3>Solde Total</h3>
+                        <p id="total-balance">0 FCFA</p>
+                    </div>
+                </div>
+                <div class="card income">
+                    <div class="card-icon"><i class="fas fa-arrow-down"></i></div>
+                    <div class="card-info">
+                        <h3>Revenus</h3>
+                        <p id="total-income">0 FCFA</p>
+                    </div>
+                </div>
+                <div class="card expense">
+                    <div class="card-icon"><i class="fas fa-arrow-up"></i></div>
+                    <div class="card-info">
+                        <h3>Dépenses</h3>
+                        <p id="total-expense">0 FCFA</p>
+                    </div>
+                </div>
             </section>
 
-            <section class="history-section">
-                <h3>Historique des transactions</h3>
-                <ul id="transaction-list">
-                    </ul>
-            </section>
-        </main>
+            <main class="dashboard-content">
+                <section class="form-section card-form">
+                    <h3>Nouvelle Transaction</h3>
+                    <form id="transaction-form">
+                        <div class="input-group">
+                            <i class="fas fa-pen input-icon"></i>
+                            <input type="text" id="description" placeholder="Ex: Loyer, Salaire..." required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-money-bill input-icon"></i>
+                            <input type="number" id="amount" placeholder="Montant" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-tag input-icon"></i>
+                            <select id="category">
+                                <option value="Loisirs">Loisirs</option>
+                                <option value="Alimentation">Alimentation</option>
+                                <option value="Transport">Transport</option>
+                                <option value="Salaire">Salaire</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-plus"></i> Ajouter la Transaction
+                        </button>
+                    </form>
+                </section>
+
+                <section class="history-section card-list">
+                    <div class="history-header">
+                        <h3>Historique des transactions</h3>
+                        <button class="btn-text">Tout voir</button>
+                    </div>
+                    <ul id="transaction-list">
+                        </ul>
+                </section>
+            </main>
+        </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

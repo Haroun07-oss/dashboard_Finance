@@ -1,102 +1,266 @@
+/* --- Variables & Reset --- */
 :root {
-    --primary: #4a90e2;
-    --success: #2ecc71;
-    --danger: #e74c3c;
-    --dark: #2c3e50;
-    --bg: #f4f7f6;
+    --primary: #6c5ce7; /* Un violet doux moderne */
+    --primary-light: #efeeff;
+    --success: #00b894; /* Vert menthe */
+    --danger: #ff7675;  /* Rouge corail */
+    --dark: #2d3436;
+    --text-muted: #636e72;
+    --bg-app: #f4f7f6; /* Fond très légèrement grisé */
+    --white: #ffffff;
+    --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg);
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-app);
     color: var(--dark);
-    margin: 0;
-    padding: 20px;
+    height: 100vh;
+    overflow: hidden; /* Empêche le défilement du body complet */
 }
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
+/* --- Layout Principal --- */
+.main-container {
+    display: flex;
+    height: 100vh;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 30px;
+/* Sidebar Styling */
+.sidebar {
+    width: 260px;
+    background-color: var(--white);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(0,0,0,0.05);
 }
 
-/* Grille de résumé */
-.summary-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-bottom: 30px;
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    text-align: center;
-}
+.logo-accent { color: var(--dark); }
 
-.card h3 { margin: 0; font-size: 0.9rem; color: #7f8c8d; }
-.card p { font-size: 1.8rem; font-weight: bold; margin: 10px 0 0; }
-
-.income p { color: var(--success); }
-.expense p { color: var(--danger); }
-.balance p { color: var(--primary); }
-
-/* Layout Main */
-.dashboard-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 30px;
-}
-
-/* Formulaire */
-form {
+.sidebar nav {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
 }
 
-input, select, button {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+.sidebar nav a {
+    text-decoration: none;
+    color: var(--text-muted);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-button {
-    background: var(--primary);
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
+.sidebar nav a:hover, .sidebar nav a.active {
+    background-color: var(--primary-light);
+    color: var(--primary);
 }
 
-button:hover { background: #357abd; }
-
-/* Liste des transactions */
-ul {
-    list-style: none;
-    padding: 0;
+/* Zone de Contenu Principal */
+.content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto; /* Autorise le défilement ici */
 }
 
-li {
-    background: white;
-    margin-bottom: 10px;
-    padding: 15px;
-    border-radius: 8px;
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-left: 5px solid #ddd;
+    margin-bottom: 40px;
 }
 
-li.plus { border-left-color: var(--success); }
-li.minus { border-left-color: var(--danger); }
+header h1 { font-size: 1.8rem; font-weight: 600; }
+.text-muted { color: var(--text-muted); font-size: 0.9rem; font-weight: 300; }
+
+.btn-profile {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Poppins';
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+.btn-profile:hover { box-shadow: var(--shadow-sm); }
+
+/* --- Cartes Résumé Moderne --- */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+.card-info h3 { font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 5px;}
+.card-info p { font-size: 1.6rem; font-weight: 700; }
+
+.balance .card-icon { background-color: var(--primary-light); color: var(--primary); }
+.income .card-icon { background-color: #d1f7ee; color: var(--success); }
+.expense .card-icon { background-color: #ffeaea; color: var(--danger); }
+
+/* --- Dashboard Content Layout --- */
+.dashboard-content {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: 30px;
+}
+
+/* --- Formulaire Stylisé --- */
+.card-form {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.card-form h3 { margin-bottom: 25px; font-weight: 600; }
+
+#transaction-form { display: flex; flex-direction: column; gap: 20px; }
+
+.input-group { position: relative; }
+.input-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+
+input, select {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border-radius: 12px;
+    border: 1px solid #e1e8ed;
+    background: #fbfdff;
+    font-family: 'Poppins';
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--white);
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-primary:hover { background-color: #5a4bcf; }
+
+/* --- Liste d'Historique Moderne --- */
+.card-list {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.btn-text { background: none; border: none; color: var(--primary); cursor: pointer; font-family: 'Poppins'; font-weight: 500;}
+
+ul { list-style: none; }
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    transition: var(--transition);
+}
+
+.transaction-item:last-child { border-bottom: none; }
+.transaction-item:hover { background-color: #fbfdff; padding-left: 10px; padding-right: 10px; border-radius: 10px;}
+
+.trans-left { display: flex; align-items: center; gap: 15px; }
+
+.trans-icon {
+    width: 45px; height: 45px; border-radius: 10px; background-color: #f4f7f6;
+    display: flex; align-items: center; justify-content: center; color: var(--text-muted);
+}
+
+.trans-desc { font-weight: 500; display: block; }
+.trans-date { font-size: 0.8rem; }
+.trans-amount { font-weight: 600; }
+
+.plus .trans-amount { color: var(--success); }
+.minus .trans-amount { color: var(--danger); }
+
+/* --- Responsive (Tablette & Mobile) --- */
+@media (max-width: 1024px) {
+    .dashboard-content { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .main-container { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid #eee; padding: 20px; }
+    .logo { margin-bottom: 20px; }
+    .sidebar nav { flex-direction: row; flex-wrap: wrap; }
+    .content { padding: 20px; }
+}
