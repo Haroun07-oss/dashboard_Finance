@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Budget - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mon Dashboard Financier</h1>
+        </header>
+
+        <section class="summary-grid">
+            <div class="card balance">
+                <h3>Solde Total</h3>
+                <p id="total-balance">0 FCFA</p>
+            </div>
+            <div class="card income">
+                <h3>Revenus</h3>
+                <p id="total-income">0 FCFA</p>
+            </div>
+            <div class="card expense">
+                <h3>Dépenses</h3>
+                <p id="total-expense">0 FCFA</p>
+            </div>
+        </section>
+
+        <main class="dashboard-content">
+            <section class="form-section">
+                <h3>Ajouter une transaction</h3>
+                <form id="transaction-form">
+                    <input type="text" id="description" placeholder="Description (ex: Loyer, Salaire...)" required>
+                    <input type="number" id="amount" placeholder="Montant" required>
+                    <select id="category">
+                        <option value="Loisirs">Loisirs</option>
+                        <option value="Alimentation">Alimentation</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Salaire">Salaire</option>
+                    </select>
+                    <button type="submit">Ajouter</button>
+                </form>
+            </section>
+
+            <section class="history-section">
+                <h3>Historique des transactions</h3>
+                <ul id="transaction-list">
+                    </ul>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
