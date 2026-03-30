@@ -8,7 +8,7 @@ const depense = document.getElementById('total-expense');
 let inputDescription = document.getElementById('description');
 let montant = document.getElementById('amount');
 let category = document.getElementById('category');
-const btnAjout = document.getElementById('btn-primary');
+const btnAjout = document.querySelector('.btn-primary');
 
 //déclaration de variable 
 
@@ -24,21 +24,34 @@ btnAjout.addEventListener('click',()=>{
     const cat = category.value;
     const desc = inputDescription.value;
 
-    const nouvelleTransaction ={
+    let nouvelleTransaction ={
         id : Date.now(),
         description: desc,
         montant: valeurMontant,
         categorie: cat,
         date: new Date().toLocaleDateString()
     };
-    //remplir le menu de haut
+
+    //gestion des depôts
     historique.push(nouvelleTransaction)
+    if (cat == 'depot') {
+        totalSolde+=valeurMontant
+        totalrevenu+=valeurMontant
+    }
+    console.log(valeurMontant);
+    console.log(nouvelleTransaction);
+    console.log(historique);
+    console.log(totalDepense);
+    console.log(totalSolde);
+    console.log(totalrevenu);
     if (cat == 'retrait' && totalSolde<valeurMontant) {
         alert('votre solde est insuffisant');
         return
-    }else if(cat =='retrait' && totalSolde>valeurMontant){
+    }
+    else if(cat =='retrait' && totalSolde>valeurMontant){
         totalSolde -=valeurMontant;
         totalDepense+=valeurMontant;
+        console.log(totalSolde,totalDepense);
         
     }
 })
